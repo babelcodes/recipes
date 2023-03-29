@@ -106,7 +106,7 @@ Ensure that your app has a `start` script in the `package.json`:
     - `git push heroku main`
 
 
-### Domain
+## Domain
 
 OVH
 
@@ -131,3 +131,20 @@ Heroku
 
 - To get logs: `heroku logs --tail --app wiwish-web`
 
+### HTTPS Sub Domain
+
+- https://devcenter.heroku.com/articles/custom-domains
+
+````shell
+$ heroku domains:add my.kora.li 
+````
+
+Get the DNS Target (`xxx.herokudns.com`) and create a `CNAME`:
+- named `my` (`.kora.li`) 
+- pointing to `xxx.herokudns.com.` (with the final dot)
+
+Wait until 24h and ensure that the domain is well forwarded:
+````shell
+$ heroku domains
+$ host my.kora.li
+````
